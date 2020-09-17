@@ -8,7 +8,7 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = ('id','name','description','image_url')
 
 class ShowtimeSerializer(serializers.ModelSerializer):
-    movie = serializers.SlugRelatedField(slug_field='name', read_only=True)
+    movie = MovieSerializer(read_only=True)
     class Meta:
         model = Showtime
         fields = ('id','theater','movie','start_times')
